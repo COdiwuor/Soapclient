@@ -25,7 +25,7 @@ public class Soapclientcat2Application {
 			GetUniversityResponse response = universityClient.getUniversityResponseResponse(universityname);
 			University university = response.getUniversity();
 			System.err.println(
-					"University Name: " + university.getName() +
+
 							"\n University name(s): " + university.getName() +
 							"\n University Location: " + university.getLocation() +
 							"\n University Year Founded: " + university.getYearFounded()
