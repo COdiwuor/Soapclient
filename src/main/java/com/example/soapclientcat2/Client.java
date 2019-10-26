@@ -8,9 +8,9 @@ import org.springframework.ws.soap.client.core.SoapActionCallback;
 public class Client extends WebServiceGatewaySupport {
 
 
-    public GetUniversityResponse getUniversityResponseResponse(String countryname) {
+    public GetUniversityResponse getUniversityResponseResponse(String universityname) {
         GetUniversityRequest request = new GetUniversityRequest();
-        request.setName(countryname);
+        request.setName(universityname);
 
 
         GetUniversityResponse response = (GetUniversityResponse) getWebServiceTemplate()

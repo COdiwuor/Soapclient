@@ -5,6 +5,7 @@ import localhost.university.University;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
 public class Soapclientcat2Application {
@@ -13,6 +14,7 @@ public class Soapclientcat2Application {
 		SpringApplication.run(Soapclientcat2Application.class, args);
 	}
 
+	@Bean
 	CommandLineRunner lookup(Client universityClient) {
 		return args -> {
 			String universityname = "Strathmore";
