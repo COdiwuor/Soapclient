@@ -9,9 +9,8 @@ public class WebClientConfig {
     @Bean
     public Jaxb2Marshaller marshaller(){
     Jaxb2Marshaller marshaller = new Jaxb2Marshaller();
-
-
-    marshaller.setContextPath("universities.wsdl");
+    //Note! this package must match the package in the <generatePackage>
+    marshaller.setContextPath("localhost.university");
     return marshaller;
     }
 
