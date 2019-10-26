@@ -15,4 +15,13 @@ public class WebClientConfig {
     return marshaller;
     }
 
+    @Bean
+    public Client quoteClient(Jaxb2Marshaller marshaller){
+    Client client = new Client();
+    client.setDefaultUri("http://localhost/university");
+    client.setMarshaller(marshaller);
+    client.setUnmarshaller(marshaller);
+    return client;
+    }
+
 }
