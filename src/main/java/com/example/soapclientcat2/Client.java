@@ -14,9 +14,9 @@ public class Client extends WebServiceGatewaySupport {
 
 
         GetUniversityResponse response = (GetUniversityResponse) getWebServiceTemplate()
-                .marshalSendAndReceive("http://localhost/university",
+                .marshalSendAndReceive("http://localhost:7000/university",
                         request,
-                        new SoapActionCallback("http://localhost/university"));
+                        new SoapActionCallback("http://localhost:7000/university"));
 
         return response;
     }
