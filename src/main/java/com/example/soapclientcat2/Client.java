@@ -1,24 +1,29 @@
 package com.example.soapclientcat2;
 
-import localhost.university.GetUniversityRequest;
-import localhost.university.GetUniversityResponse;
 import org.springframework.ws.client.core.support.WebServiceGatewaySupport;
-import org.springframework.ws.soap.client.core.SoapActionCallback;
+import universities.wsdl.*;
 
 public class Client extends WebServiceGatewaySupport {
 
 
-    public GetUniversityResponse getUniversityResponseResponse(String universityname) {
+    public GetUniversityResponse getUniversityResponse (String universityname) {
         GetUniversityRequest request = new GetUniversityRequest();
         request.setName(universityname);
 
+        return (GetUniversityResponse) getWebServiceTemplate().marshalSendAndReceive("http://localhost:7000/ws/universities",request);
+    }
 
-        GetUniversityResponse response = (GetUniversityResponse) getWebServiceTemplate()
-                .marshalSendAndReceive("http://localhost:7000/university",
-                        request,
-                        new SoapActionCallback("http://localhost:7000/university"));
+    public GetAllUniversitiesAtLocationResponse getAllUniversitiesAtLocationResponse (String location){
 
-        return response;
+        GetAllUniversitiesAtLocationRequest request = new GetAllUniversitiesAtLocationRequest();
+        request.setLocation(location);
+
+        return (GetAllUniversitiesAtLocationResponse)getWebServiceTemplate().marshalSendAndReceive("http://localhost:7000/ws/universities",request);
+    }
+
+    public GetAllUniversitiesResponse  getAllUniversitiesResponse (){
+        GetAllUniversitiesRequest request = new GetAllUniversitiesRequest();
+        return (GetAllUniversitiesResponse)getWebServiceTemplate().marshalSendAndReceive("http://localhost:7000/ws/universities",request);
     }
 
 }

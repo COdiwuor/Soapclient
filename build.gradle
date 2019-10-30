@@ -14,7 +14,7 @@ repositories {
 task genJaxb {
 	ext.sourcesDir = "${buildDir}/generated-sources/jaxb"
 	ext.classesDir = "${buildDir}/classes/jaxb"
-	ext.schema = "src/main/resources/universities.xsd" //NAME OF YOUR XSD FILE
+	ext.schema = "http://localhost:7000/ws/universities.wsdl" //NAME OF YOUR XSD FILE
 	outputs.dir classesDir
 	doLast() {
 		project.ant {
@@ -22,7 +22,7 @@ task genJaxb {
 					classpath: configurations.jaxb.asPath
 			mkdir(dir: sourcesDir)
 			mkdir(dir: classesDir)
-			xjc(destdir: sourcesDir, schema: schema) {
+			xjc(destdir: sourcesDir, schema: schema, package: "universities.wsdl") {
 				arg(value: "-wsdl")
 				produces(dir: sourcesDir, includes: "**/*.java")
 			}
